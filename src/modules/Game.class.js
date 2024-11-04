@@ -1,11 +1,12 @@
-"use strict";
-
+'use strict';
+/**
+ */
 class Game {
   static Status = {
-    idle: "idle",
-    playing: "playing",
-    win: "win",
-    lose: "lose",
+    idle: 'idle',
+    playing: 'playing',
+    win: 'win',
+    lose: 'lose',
   };
 
   constructor(
@@ -37,6 +38,8 @@ class Game {
     return this.status;
   }
 
+  /**
+   */
   start() {
     this.status = Game.Status.playing;
     this.state = [...this.initialState.map((row) => [...row])];
@@ -46,6 +49,8 @@ class Game {
     this.printTiles();
   }
 
+  /**
+   */
   restart() {
     this.clearTheBoard();
 
@@ -75,6 +80,7 @@ class Game {
           while (this.state[row][tile + moveTileBy + 1] === 0) {
             moveTileBy++;
           }
+
           if (
             !didJustMerged &&
             this.state[row][tile + moveTileBy + 1] === this.state[row][tile]
@@ -378,7 +384,7 @@ class Game {
   }
 
   printTiles() {
-    const cells = document.getElementsByClassName("field-cell");
+    const cells = document.getElementsByClassName('field-cell');
 
     const flatState = this.state.flat();
 
@@ -393,8 +399,8 @@ class Game {
         }
       } else {
         if (currentCell !== undefined) {
-          currentCell.textContent = "";
-          currentCell.className = "field-cell";
+          currentCell.textContent = '';
+          currentCell.className = 'field-cell';
         }
       }
     }
